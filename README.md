@@ -6,7 +6,7 @@ This is a small demonstration of a simple voice assistant which can perform a nu
 
 **Currently under work**
 
-## Modules used
+## Libraries used
 * wikipedia
 * speech_recognition
 * webbrowser
