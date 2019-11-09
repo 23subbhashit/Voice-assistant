@@ -59,9 +59,9 @@ elif text.lower() in greet_in:                                  #Greet
     a=greeting(text.lower())
     print(a) 
 elif 'launch' in text:                                          #To open an app in your system
-        reg_ex = re.search('launch (.*)', text)
-        if reg_ex:
-            appname = reg_ex.group(1)
+        exp= re.search('launch (.*)', text)
+        if exp:
+            appname = exp.group(1)
             appname1 = appname+".exe"
             subprocess.Popen(["open", "-n", "/Applications/" + appname1], stdout=subprocess.PIPE)
 elif 'time' in text:                                            #Shows the current time
