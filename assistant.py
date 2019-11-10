@@ -29,7 +29,7 @@ if 'tell me about' in text:                                       #To know about
             if exp:
                 topic = exp.group(1)
                 ny = wikipedia.page(topic)
-                print(ny.content[:200])
+                print(ny.content[:500])
         except Exception as e:
                 pass
 elif 'current weather' in text:                                   #To know the current weather
