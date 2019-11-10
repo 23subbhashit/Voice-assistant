@@ -4,7 +4,7 @@ import wikipedia
 from pyowm import OWM
 import webbrowser
 import subprocess
-#import pyaudio
+import smtplib
 import random
 from datetime import datetime
 r=sr.Recognizer()                                                                         #for speech recognition
@@ -67,3 +67,24 @@ elif 'launch' in text:                                          #To open an app 
 elif 'time' in text:                                            #Shows the current time
      now = datetime.now()
      print('Current time is %d hours %d minutes' % (now.hour, now.minute))
+elif 'email' in text:                                           #To email someone
+    sender=input("Please enter your email :")
+    receiver=input("Please enter receiver's email")
+    password=input("please enter your password")
+    print('What should I say to him?')
+    with sr.Microphone() as source:
+        print("content")
+        b=r.listen(source)
+    try:
+        content=r.recognize_google(audio)
+        print("content is :",content)
+    except:
+        print("translation failed:.")
+            
+    mail = smtplib.SMTP('smtp.gmail.com', 587)
+    mail.ehlo()
+    mail.starttls()
+    mail.login(sender,password)
+    mail.sendmail(sender,receiver,content)
+    mail.close()
+    print('Email has been sent successfuly. You can check your inbox.')
