@@ -15,6 +15,7 @@ This is a small demonstration of a simple voice assistant which can perform a nu
 * pyowm
 * datetime
 * random
+* smtplib
 ## License
 
 Licensed by [Apache](LICENSE)
