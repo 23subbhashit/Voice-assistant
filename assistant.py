@@ -7,6 +7,8 @@ import subprocess
 import smtplib
 import random
 from datetime import datetime
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 r=sr.Recognizer()                                                                         #for speech recognition
 greet_in= ("hello", "hi", "greetings", "sup", "what's up","hey")
 greet_out= ["hi", "hey", "*nods*", "hi there", "hello", "I am glad! You are talking to me"]
@@ -88,3 +90,13 @@ elif 'email' in text:                                           #To email someon
     mail.sendmail(sender,receiver,content)
     mail.close()
     print('Email has been sent successfuly. You can check your inbox.')
+elif 'Google' in text:                                              #To search anything in google
+    exp=re.search('search in Google (.*)',text)
+    if exp:
+        query=exp.group(1)
+        print(query)
+    browser = webdriver.Chrome()
+    browser.get('http://www.google.com')
+    search = browser.find_element_by_name('q')
+    search.send_keys(query)
+    search.send_keys(Keys.RETURN)
