@@ -16,6 +16,7 @@ This is a small demonstration of a simple voice assistant which can perform a nu
 * datetime
 * random
 * smtplib
+* selenium
 ## License
 
 Licensed by [Apache](LICENSE)
