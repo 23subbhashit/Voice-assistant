@@ -9,6 +9,8 @@ import random
 from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from bs4 import BeautifulSoup as soup
+import urllib.request
 r=sr.Recognizer()                                                                         #for speech recognition
 greet_in= ("hello", "hi", "greetings", "sup", "what's up","hey")
 greet_out= ["hi", "hey", "*nods*", "hi there", "hello", "I am glad! You are talking to me"]
@@ -100,3 +102,25 @@ elif 'Google' in text:                                              #To search a
     search = browser.find_element_by_name('q')
     search.send_keys(query)
     search.send_keys(Keys.RETURN)
+elif "song" in text:
+    exp=re.search("play me song (.*)",text)                                               #To play a song in youtube
+    if exp:
+        song=exp.group(1)
+        print(song)
+    mysong = song
+    if mysong:
+            flag = 0
+            url = "https://www.youtube.com/results?search_query=" + mysong.replace(' ', '+')
+            response = urllib.request.urlopen(url)
+            html = response.read()
+            soup1 = soup(html,"lxml")
+            url_list = []
+            for vid in soup1.findAll(attrs={'class':'yt-uix-tile-link'}):
+                if ('https://www.youtube.com' + vid['href']).startswith("https://www.youtube.com/watch?v="):
+                    flag = 1
+                    final_url = 'https://www.youtube.com' + vid['href']
+                    url_list.append(final_url)
+            url = url_list[1]
+            webbrowser.open(url)
+            if flag == 0:
+                print('I have not found anything in Youtube ')
