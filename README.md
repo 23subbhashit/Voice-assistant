@@ -17,6 +17,8 @@ This is a small demonstration of a simple voice assistant which can perform a nu
 * random
 * smtplib
 * selenium
+* bs4
+* urllib
 ## License
 
 Licensed by [Apache](LICENSE)
