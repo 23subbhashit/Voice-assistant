@@ -4,7 +4,6 @@ Voice assistants come in somewhat small packages and can perform a variety of ac
 This is a small demonstration of a simple voice assistant which can perform a number of small tasks.
 ![ezgif com-video-to-gif (1)](https://user-images.githubusercontent.com/43717493/68534922-9af96200-0360-11ea-97ea-cb7fb473eda0.gif)
 
-**Currently under work**
 
 ## Libraries used
 * wikipedia
